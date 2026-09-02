@@ -1,0 +1,37 @@
+# OS and IDE state
+.DS_Store
+Thumbs.db
+Desktop.ini
+.vs/
+.vscode/
+.idea/
+
+# AI tool state
+.agents/
+.codex/
+.claude/
+.opencode/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*.pfx
+
+# Python and local output
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+.cache/
+.tmp/
+*.bak
+*.tmp
+*.log
+coverage/
+build/
