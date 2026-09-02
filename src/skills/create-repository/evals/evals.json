@@ -1,0 +1,279 @@
+{
+  "skill_name": "create-repository",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "On Windows, create a base project named Portal in D:\\work\\Portal. I confirm the base profile, name, and destination.",
+      "expected_output": "Uses the PowerShell generator with the base profile after validating the empty destination.",
+      "files": [],
+      "expectations": [
+        "Use make/New-RepositoryFromTemplate.ps1 with Profile=base, Name=Portal, and Destination=D:\\work\\Portal.",
+        "Clone https://github.com/simpleunion-space/repo-templates.git at tag v1.0.0, verify HEAD is d97248c4002a39e97f06d09be8a636da571d2c13, and do not run git init.",
+        "Do not pass version overrides, initialize Git, commit, or publish."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "On Linux, create a base project named Portal in /work/Portal. I confirm the base profile, name, and destination.",
+      "expected_output": "Uses the Bash generator with the base profile after validating the empty destination.",
+      "files": [],
+      "expectations": [
+        "Use make/New-RepositoryFromTemplate.sh with --profile base, --name Portal, and --destination /work/Portal.",
+        "Clone https://github.com/simpleunion-space/repo-templates.git at tag v1.0.0, verify HEAD is d97248c4002a39e97f06d09be8a636da571d2c13, and do not run git init.",
+        "Do not initialize Git, commit, or publish."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "On Windows, create the confirmed net project Billing.Api in D:\\work\\Billing.Api with .NET SDK 10.0.401.",
+      "expected_output": "Uses the PowerShell generator for the net profile and passes only the requested SDK override.",
+      "files": [],
+      "expectations": [
+        "Use -Profile net, -Name Billing.Api, -Destination D:\\work\\Billing.Api, and -DotnetSdkVersion 10.0.401.",
+        "Do not pass TargetFramework, PythonVersion, or UnityVersion without an explicit request.",
+        "Use https://github.com/simpleunion-space/repo-templates.git at tag v1.0.0, verify HEAD is d97248c4002a39e97f06d09be8a636da571d2c13, and do not run git init."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "On macOS, create the confirmed net project Billing.Api in /work/Billing.Api with target framework net10.0.",
+      "expected_output": "Uses the Bash generator for the net profile and passes the explicitly requested target framework.",
+      "files": [],
+      "expectations": [
+        "Use --profile net, --name Billing.Api, --destination /work/Billing.Api, and --target-framework net10.0.",
+        "Do not add an SDK, Python, or Unity override that the user did not request.",
+        "Use https://github.com/simpleunion-space/repo-templates.git at tag v1.0.0, verify HEAD is d97248c4002a39e97f06d09be8a636da571d2c13, and do not run git init."
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "On Windows, create the confirmed python project ReportTools in D:\\work\\ReportTools using Python 3.13.",
+      "expected_output": "Uses the PowerShell generator for the python profile with the requested Python override.",
+      "files": [],
+      "expectations": [
+        "Use -Profile python, -Name ReportTools, -Destination D:\\work\\ReportTools, and -PythonVersion 3.13.",
+        "Do not add .NET or Unity version parameters.",
+        "Use https://github.com/simpleunion-space/repo-templates.git at tag v1.0.0, verify HEAD is d97248c4002a39e97f06d09be8a636da571d2c13, and do not run git init.",
+        "Report the catalog SHA and that no repository was initialized."
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "On Linux, create the confirmed python project ReportTools in /work/ReportTools.",
+      "expected_output": "Uses the Bash generator for the python profile and retains the generator defaults.",
+      "files": [],
+      "expectations": [
+        "Use --profile python, --name ReportTools, and --destination /work/ReportTools.",
+        "Do not pass any optional version argument.",
+        "Use https://github.com/simpleunion-space/repo-templates.git at tag v1.0.0, verify HEAD is d97248c4002a39e97f06d09be8a636da571d2c13, and do not run git init.",
+        "Report the catalog SHA and no Git initialization."
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "On Windows, create the confirmed unity project SpaceGame in D:\\work\\SpaceGame for Unity 6000.3.20f1.",
+      "expected_output": "Uses the PowerShell generator for the unity profile with the requested Unity override.",
+      "files": [],
+      "expectations": [
+        "Use -Profile unity, -Name SpaceGame, -Destination D:\\work\\SpaceGame, and -UnityVersion 6000.3.20f1.",
+        "Do not add .NET or Python version parameters.",
+        "Use https://github.com/simpleunion-space/repo-templates.git at tag v1.0.0, verify HEAD is d97248c4002a39e97f06d09be8a636da571d2c13, and do not run git init.",
+        "Report the catalog SHA and that no Git repository was created."
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "On macOS, create the confirmed unity project SpaceGame in /work/SpaceGame.",
+      "expected_output": "Uses the Bash generator for the unity profile and retains the generator defaults.",
+      "files": [],
+      "expectations": [
+        "Use --profile unity, --name SpaceGame, and --destination /work/SpaceGame.",
+        "Do not pass optional version arguments without an explicit request.",
+        "Use https://github.com/simpleunion-space/repo-templates.git at tag v1.0.0, verify HEAD is d97248c4002a39e97f06d09be8a636da571d2c13, and do not run git init.",
+        "Report the catalog SHA and no Git initialization."
+      ]
+    },
+    {
+      "id": 9,
+      "prompt": "On Windows, create the confirmed iac-base project PlatformInfra in D:\\work\\PlatformInfra.",
+      "expected_output": "Uses the PowerShell generator for the iac-base profile.",
+      "files": [],
+      "expectations": [
+        "Use -Profile iac-base, -Name PlatformInfra, and -Destination D:\\work\\PlatformInfra.",
+        "Do not pass optional version parameters.",
+        "Use https://github.com/simpleunion-space/repo-templates.git at tag v1.0.0, verify HEAD is d97248c4002a39e97f06d09be8a636da571d2c13, and do not run git init.",
+        "Report the catalog SHA and no Git initialization."
+      ]
+    },
+    {
+      "id": 10,
+      "prompt": "On Linux, create the confirmed iac-base project PlatformInfra in /work/PlatformInfra.",
+      "expected_output": "Uses the Bash generator for the iac-base profile.",
+      "files": [],
+      "expectations": [
+        "Use --profile iac-base, --name PlatformInfra, and --destination /work/PlatformInfra.",
+        "Do not pass optional version parameters.",
+        "Use https://github.com/simpleunion-space/repo-templates.git at tag v1.0.0, verify HEAD is d97248c4002a39e97f06d09be8a636da571d2c13, and do not run git init.",
+        "Report the catalog SHA and no Git initialization."
+      ]
+    },
+    {
+      "id": 11,
+      "prompt": "On Windows, create the confirmed ansible project Operations in D:\\work\\Operations.",
+      "expected_output": "Uses the PowerShell generator for the ansible profile.",
+      "files": [],
+      "expectations": [
+        "Use -Profile ansible, -Name Operations, and -Destination D:\\work\\Operations.",
+        "Do not pass optional version parameters.",
+        "Use https://github.com/simpleunion-space/repo-templates.git at tag v1.0.0, verify HEAD is d97248c4002a39e97f06d09be8a636da571d2c13, and do not run git init.",
+        "Report the catalog SHA and no Git initialization."
+      ]
+    },
+    {
+      "id": 12,
+      "prompt": "On Linux, create the confirmed ansible project Operations in /work/Operations.",
+      "expected_output": "Uses the Bash generator for the ansible profile.",
+      "files": [],
+      "expectations": [
+        "Use --profile ansible, --name Operations, and --destination /work/Operations.",
+        "Do not pass optional version parameters.",
+        "Use https://github.com/simpleunion-space/repo-templates.git at tag v1.0.0, verify HEAD is d97248c4002a39e97f06d09be8a636da571d2c13, and do not run git init.",
+        "Report the catalog SHA and no Git initialization."
+      ]
+    },
+    {
+      "id": 13,
+      "prompt": "On Windows, create the confirmed salt project Configuration in D:\\work\\Configuration.",
+      "expected_output": "Uses the PowerShell generator for the salt profile.",
+      "files": [],
+      "expectations": [
+        "Use -Profile salt, -Name Configuration, and -Destination D:\\work\\Configuration.",
+        "Do not pass optional version parameters.",
+        "Use https://github.com/simpleunion-space/repo-templates.git at tag v1.0.0, verify HEAD is d97248c4002a39e97f06d09be8a636da571d2c13, and do not run git init.",
+        "Report the catalog SHA and no Git initialization."
+      ]
+    },
+    {
+      "id": 14,
+      "prompt": "On Linux, create the confirmed salt project Configuration in /work/Configuration.",
+      "expected_output": "Uses the Bash generator for the salt profile.",
+      "files": [],
+      "expectations": [
+        "Use --profile salt, --name Configuration, and --destination /work/Configuration.",
+        "Do not pass optional version parameters.",
+        "Use https://github.com/simpleunion-space/repo-templates.git at tag v1.0.0, verify HEAD is d97248c4002a39e97f06d09be8a636da571d2c13, and do not run git init.",
+        "Report the catalog SHA and no Git initialization."
+      ]
+    },
+    {
+      "id": 15,
+      "prompt": "On Windows, create the confirmed base project Existing in D:\\work\\Existing, which already contains README.md.",
+      "expected_output": "Refuses safely before cloning or invoking a generator.",
+      "files": [],
+      "expectations": [
+        "Explain that the destination is nonempty and must not be cleared.",
+        "Do not clone the catalog or run make/New-RepositoryFromTemplate.ps1.",
+        "Do not modify the existing destination."
+      ]
+    },
+    {
+      "id": 16,
+      "prompt": "On Linux, create the confirmed base project 3invalid in /work/3invalid.",
+      "expected_output": "Refuses safely before cloning because the name violates the generator contract.",
+      "files": [],
+      "expectations": [
+        "State that the name must match ^[A-Za-z][A-Za-z0-9._-]*$.",
+        "Do not clone the catalog or run make/New-RepositoryFromTemplate.sh.",
+        "Do not create or modify the destination."
+      ]
+    },
+    {
+      "id": 17,
+      "prompt": "On Linux, create the confirmed base project Unreachable in /work/Unreachable, but the required GitHub catalog URL is unavailable.",
+      "expected_output": "Reports a clone-stage failure while preserving the destination and cleaning only the temporary clone.",
+      "files": [],
+      "expectations": [
+        "Attempt only https://github.com/simpleunion-space/repo-templates.git at tag v1.0.0; do not substitute another source.",
+        "Report that generation did not start and no verified source SHA is available.",
+        "Clean the temporary clone directory only, leave /work/Unreachable uncreated or unchanged, and do not initialize Git."
+      ]
+    },
+    {
+      "id": 18,
+      "prompt": "On Windows, create the confirmed net-consoleapp project ImportTool in D:\\work\\ImportTool.",
+      "expected_output": "Uses the PowerShell generator for the net-consoleapp profile with generator defaults.",
+      "files": [],
+      "expectations": [
+        "Use -Profile net-consoleapp, -Name ImportTool, and -Destination D:\\work\\ImportTool.",
+        "Do not pass DotnetSdkVersion or TargetFramework without an explicit request.",
+        "Clone https://github.com/simpleunion-space/repo-templates.git at tag v1.0.0, verify HEAD is d97248c4002a39e97f06d09be8a636da571d2c13, and do not run git init."
+      ]
+    },
+    {
+      "id": 19,
+      "prompt": "On Linux, create the confirmed net-consoleapp project ImportTool in /work/ImportTool.",
+      "expected_output": "Uses the Bash generator for the net-consoleapp profile with generator defaults.",
+      "files": [],
+      "expectations": [
+        "Use --profile net-consoleapp, --name ImportTool, and --destination /work/ImportTool.",
+        "Do not pass .NET version overrides without an explicit request.",
+        "Clone https://github.com/simpleunion-space/repo-templates.git at tag v1.0.0, verify HEAD is d97248c4002a39e97f06d09be8a636da571d2c13, and do not run git init."
+      ]
+    },
+    {
+      "id": 20,
+      "prompt": "On Windows, create the confirmed net-webapp project CustomerPortal in D:\\work\\CustomerPortal.",
+      "expected_output": "Uses the PowerShell generator for the net-webapp profile with generator defaults.",
+      "files": [],
+      "expectations": [
+        "Use -Profile net-webapp, -Name CustomerPortal, and -Destination D:\\work\\CustomerPortal.",
+        "Do not pass DotnetSdkVersion or TargetFramework without an explicit request.",
+        "Clone https://github.com/simpleunion-space/repo-templates.git at tag v1.0.0, verify HEAD is d97248c4002a39e97f06d09be8a636da571d2c13, and do not run git init."
+      ]
+    },
+    {
+      "id": 21,
+      "prompt": "On macOS, create the confirmed net-webapp project CustomerPortal in /work/CustomerPortal.",
+      "expected_output": "Uses the Bash generator for the net-webapp profile with generator defaults.",
+      "files": [],
+      "expectations": [
+        "Use --profile net-webapp, --name CustomerPortal, and --destination /work/CustomerPortal.",
+        "Do not pass .NET version overrides without an explicit request.",
+        "Clone https://github.com/simpleunion-space/repo-templates.git at tag v1.0.0, verify HEAD is d97248c4002a39e97f06d09be8a636da571d2c13, and do not run git init."
+      ]
+    },
+    {
+      "id": 22,
+      "prompt": "On Windows, create the confirmed net-desktopapp project DeskSuite in D:\\work\\DeskSuite.",
+      "expected_output": "Uses the PowerShell generator for the net-desktopapp profile with generator defaults.",
+      "files": [],
+      "expectations": [
+        "Use -Profile net-desktopapp, -Name DeskSuite, and -Destination D:\\work\\DeskSuite.",
+        "Do not pass DotnetSdkVersion or TargetFramework without an explicit request.",
+        "Clone https://github.com/simpleunion-space/repo-templates.git at tag v1.0.0, verify HEAD is d97248c4002a39e97f06d09be8a636da571d2c13, and do not run git init."
+      ]
+    },
+    {
+      "id": 23,
+      "prompt": "On Linux, create the confirmed net-desktopapp project DeskSuite in /work/DeskSuite.",
+      "expected_output": "Uses the Bash generator for the net-desktopapp profile with generator defaults.",
+      "files": [],
+      "expectations": [
+        "Use --profile net-desktopapp, --name DeskSuite, and --destination /work/DeskSuite.",
+        "Do not pass .NET version overrides without an explicit request.",
+        "Clone https://github.com/simpleunion-space/repo-templates.git at tag v1.0.0, verify HEAD is d97248c4002a39e97f06d09be8a636da571d2c13, and do not run git init."
+      ]
+    },
+    {
+      "id": 24,
+      "prompt": "On Linux, create the confirmed base project LockedSource in /work/LockedSource, but tag v1.0.0 resolves to a commit other than d97248c4002a39e97f06d09be8a636da571d2c13.",
+      "expected_output": "Reports a source-lock failure before invoking the generator.",
+      "files": [],
+      "expectations": [
+        "Clone only https://github.com/simpleunion-space/repo-templates.git at tag v1.0.0 and obtain HEAD.",
+        "Stop when HEAD does not equal d97248c4002a39e97f06d09be8a636da571d2c13; do not run either generator or git init.",
+        "Clean only the temporary clone and leave /work/LockedSource uncreated or unchanged."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+name: ai-skills
+
+services:
+  tests:
+    image: ai-skills-checks
+    build:
+      context: ../..
+      dockerfile: tools/docker/Dockerfile
+    working_dir: /workspace
+    command: ["sh", "tools/scripts/tests.sh"]
+    volumes:
+      - ../..:/workspace:ro
